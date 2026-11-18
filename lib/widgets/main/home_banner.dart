@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_web/constants.dart';
+import 'package:real_estate_web/responsive.dart';
 
 class HomeBanner extends StatelessWidget {
   const HomeBanner({super.key});
@@ -7,7 +8,8 @@ class HomeBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1.7,
+      aspectRatio:
+      Responsive.isMobile(context)?1 : 1.7,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -22,7 +24,12 @@ class HomeBanner extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Build a grate future\nfor all of us!',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                style:  Responsive.isDesktop(context)? 
+                Theme.of(context).textTheme.headlineMedium!.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  )   :
+                 Theme.of(context).textTheme.headlineSmall!.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),

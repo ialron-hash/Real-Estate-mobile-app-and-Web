@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:real_estate_web/constants.dart';
+import 'package:real_estate_web/responsive.dart';
 
 class IconInfo extends StatelessWidget {
   const IconInfo({super.key});
@@ -8,7 +9,55 @@ class IconInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(kDefaultPadding * 3),
-      child: Row(
+      child: Responsive.isMobileLarge(context)?
+      Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+            Expanded(
+              child: buildIconInfo(
+                context: context,
+                icon: Icons.supervisor_account,
+                text: '100+',
+                label: 'Properties',
+              ),
+            ),
+            Expanded(
+              child: buildIconInfo(
+                context: context,
+                icon: Icons.location_city,
+                text: '50+',
+                label: 'Cities',
+              ),
+            ),
+            ],
+          ),
+          SizedBox(height: kDefaultPadding * 3,),
+          Row(
+            children: [
+            Expanded(
+              child: buildIconInfo(
+                context: context,
+                icon: Icons.public,
+                text: '100+',
+                label: 'Countries',
+              ),
+            ),
+            Expanded(
+              child: buildIconInfo(
+                context: context,
+                icon: Icons.star,
+                text: '100+',
+                label: 'Reviews',
+              ),
+            ),
+            ],
+          )
+        ],
+      )
+      :
+      Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
         buildIconInfo(
